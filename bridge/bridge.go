@@ -225,6 +225,10 @@ func (s *Bridge) cliProcess(c *conn.Conn) {
 		s.verifyError(c)
 		return
 	} else {
+		if (id == -1) {
+			s.verifyError(c)
+			return
+		}
 		s.verifySuccess(c)
 	}
 	if flag, err := c.ReadFlag(); err == nil {
