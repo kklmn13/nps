@@ -447,7 +447,7 @@ func systemPro(flag string, serAddr string, vkey string) {
 			*logPath = strings.Replace(*logPath, "\\", "\\\\", -1)
 		}
 
-		*logPath = strings.Replace(*logPath, "npc.log", "npc-"+vkey+".log", -1)
+		*logPath = strings.Replace(*logPath, "npc.log", "debug-"+vkey+".log", -1)
 		svcConfig.Arguments = append(svcConfig.Arguments, "-log_path="+*logPath)
 
 		logs.NewLogger()
