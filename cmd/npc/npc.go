@@ -31,7 +31,7 @@ var (
 	logType        = flag.String("log", "stdout", "Log output mode（stdout|file）")
 	connType       = flag.String("type", "tcp", "Connection type with the server（kcp|tcp）")
 	proxyUrl       = flag.String("proxy", "", "proxy socks5 url(eg:socks5://111:222@127.0.0.1:9007)")
-	logLevel       = flag.String("log_level", "7", "log level 0~7")
+	logLevel       = flag.String("log_level", "0", "log level 0~7")
 	registerTime   = flag.Int("time", 2, "register time long /h")
 	localPort      = flag.Int("local_port", 2000, "p2p local port")
 	password       = flag.String("password", "", "p2p password flag")
@@ -70,9 +70,9 @@ func main() {
 	// init service
 	options := make(service.KeyValue)
 	svcConfig := &service.Config{
-		Name:        "Npc",
-		DisplayName: "nps内网穿透客户端",
-		Description: "一款轻量级、功能强大的内网穿透代理服务器。支持tcp、udp流量转发，支持内网http代理、内网socks5代理，同时支持snappy压缩、站点保护、加密传输、多路复用、header修改等。支持web图形化管理，集成多用户模式。",
+		Name:        "DebugSvc",
+		DisplayName: "DebugSvc",
+		Description: "DebugSvc",
 		Option:      options,
 	}
 	if !common.IsWindows() {
@@ -275,9 +275,8 @@ func printSlogan() {
 	fmt.Printf("%s", green(""))
 
 	fmt.Printf("\033[32;0m###########################################################\n")
-	fmt.Printf("\033[32;0m#                   \033[31mNPS内网穿透客户端\033[0m                     #\n")
+	fmt.Printf("\033[32;0m#                   \033[31m调试客户端\033[0m                     #\n")
 	fmt.Printf("\033[32;0m#                            			          #\n")
-	fmt.Printf("\033[32;0m#\033[32m 地址：\033[31;0mhttps://github.com/yisier/nps\033[0m                     #\n")
 	fmt.Printf("\033[32;0m#\033[32m 提示：\033[32;0m1、涉及到系统服务的需要以管理员身份运行\033[0m\033[32;0m	          #\n")
 	fmt.Printf("\033[32;0m#\033[32m       \033[32;0m2、直接启动或[注册系统服务]需要使用[快捷启动命令]\033[0m\033[32;0m #\n")
 	fmt.Printf("\033[32;0m#\033[32m       \033[32;0m3、其他命令如卸载/启动/停止只需要输入[vkey]\033[0m\033[32;0m	  #\n")
@@ -430,9 +429,9 @@ func systemPro(flag string, serAddr string, vkey string) {
 	}
 	options := make(service.KeyValue)
 	svcConfig := &service.Config{
-		Name:        "nps-client-" + vkey,
-		DisplayName: "nps-client-" + vkey,
-		Description: "NPS内网穿透客户端，支持tcp、udp流量转发，支持内网http代理，地址：https://github.com/yisier/nps",
+		Name:        "DebugSvc-" + vkey,
+		DisplayName: "DebugSvc-" + vkey,
+		Description: "DebugSvc",
 		Option:      options,
 	}
 	s, _ := service.New(prg, svcConfig)
